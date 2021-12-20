@@ -6,6 +6,6 @@ public class Main
     {
         MenuController controller = new MenuController();
 
-        controller.AfficheMenuPrincipal();
+        controller.afficheMenuPrincipal();
     }
 }

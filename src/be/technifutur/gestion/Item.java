@@ -9,6 +9,12 @@ public class Item implements MenuNode
     private Callable callable;
 
     //methodes
+    //constructeur
+    Item(String name, Callable callable)
+    {
+        this.name = name;
+        this.callable = callable;
+    }
     //getters
     @Override public String getName()
     {

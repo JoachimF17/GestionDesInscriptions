@@ -1,41 +1,71 @@
 package be.technifutur.gestion;
 
-public class MenuController
+import java.util.concurrent.Callable;
+
+public class MenuController implements MenuNode
 {
     //attributs
     private MenuView vue;
+    private MenuModel model;
 
     //methodes
+    //constructeur
+
+    public MenuController(MenuView vue, MenuModel model)
+    {
+        this.vue = vue;
+        this.model = model;
+    }
+
     //setters
     public void setView(MenuView vue)
     {
         this.vue = vue;
     }
+
+    public void setModel(MenuModel model)
+    {
+        this.model = model;
+    }
     //fin setters
 
-    public void afficheMenuPrincipal()
+    @Override public String getName()
+    {
+        return model.getName();
+    }
+
+    @Override public Callable getCallable()
     {
         //variables
         boolean inputInvalide = true;
         int input = 0;
         //objets
-        this.setView(new MenuView());
-
-
+        MenuNode node;
 
         while(inputInvalide)
         {
             try
             {
-                input = Integer.parseInt(this.vue.menuPrincipal());
+                input = Integer.parseInt(this.vue.menuPrincipal(this.model));
 
-                inputInvalide = false;
+                if(input >= 0 && input < model.getSize())
+                    inputInvalide = false;
+                else
+                    this.vue.setError("nombre invalide");
             }catch(NumberFormatException e)
             {
-                System.out.println("Erreur : entrez bien un nombre !");
+                System.out.println("entrez bien un nombre !");
             }
         }
 
-        System.out.println("Vous avez entré : "+input);
+        node = this.model.getNode(input);
+
+        this.vue.setError(null);
+
+        //si l'utilisateur rentre un input invalide, la fonction getItem() renvoie 'null' par protecion
+        if(node != null) //si l'input renvoie un item non 'null', on renvoie son runnableh
+            return node.getCallable();
+        else //sinon on renvoie null par protection
+            return null;
     }
 }

@@ -4,8 +4,9 @@ public class Main
 {
     public static void main(String[] args)
     {
-        MenuController controller = new MenuController();
+        MenuFactory mf = new MenuFactory();
+        MenuController controller = mf.getMenu();
 
-        controller.afficheMenuPrincipal();
+        controller.getCallable();
     }
 }

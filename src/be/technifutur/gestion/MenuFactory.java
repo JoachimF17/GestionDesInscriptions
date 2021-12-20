@@ -2,8 +2,6 @@ package be.technifutur.gestion;
 
 import be.technifutur.gestion.callables.CreerActivite;
 
-import java.util.concurrent.Callable;
-
 public class MenuFactory
 {
     private MenuController createMenu(MenuModel model)

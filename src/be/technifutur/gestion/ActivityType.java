@@ -1,6 +1,8 @@
 package be.technifutur.gestion;
 
-public class ActivityType
+import java.io.Serializable;
+
+public class ActivityType implements Serializable
 {
     //attributs
     private String name;

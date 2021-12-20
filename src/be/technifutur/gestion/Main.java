@@ -1,5 +1,7 @@
 package be.technifutur.gestion;
 
+import java.util.concurrent.Callable;
+
 public class Main
 {
     public static void main(String[] args)
@@ -7,6 +9,14 @@ public class Main
         MenuFactory mf = new MenuFactory();
         MenuController controller = mf.getMenu();
 
-        controller.getCallable();
+        Callable test = controller.getCallable();
+
+        try
+        {
+            test.call();
+        }catch(Exception e)
+        {
+            System.out.println("zzz");
+        }
     }
 }

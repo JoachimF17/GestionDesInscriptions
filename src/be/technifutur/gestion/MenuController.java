@@ -11,7 +11,7 @@ public class MenuController implements MenuNode
     //methodes
     //constructeur
 
-    public MenuController(MenuView vue, MenuModel model)
+    MenuController(MenuView vue, MenuModel model)
     {
         this.vue = vue;
         this.model = model;
@@ -58,7 +58,7 @@ public class MenuController implements MenuNode
             }
         }
 
-        node = this.model.getNode(input);
+        node = this.model.getNode(input-1);
 
         this.vue.setError(null);
 

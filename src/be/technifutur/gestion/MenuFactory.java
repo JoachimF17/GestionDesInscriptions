@@ -1,16 +1,11 @@
 package be.technifutur.gestion;
 
-import be.technifutur.gestion.callables.ActivitesMenu;
+import be.technifutur.gestion.callables.CreerActivite;
 
 import java.util.concurrent.Callable;
 
 public class MenuFactory
 {
-    private Item createItem(String name, Callable action)
-    {
-        return new Item(name, action);
-    }
-
     private MenuController createMenu(MenuModel model)
     {
         return new MenuController(new MenuView(), model);
@@ -21,9 +16,19 @@ public class MenuFactory
         return new Item("Quitter", null);
     }
 
-    private Item getItemActivites()
+    private Item getItemRetourMenuPrincipal()
     {
-        return new Item("Gestion des activites", new ActivitesMenu());
+        return new Item("Retour menu principal", null);
+    }
+
+    private Item getItemCreerActivite()
+    {
+        return new Item("Creer une activite", new CreerActivite());
+    }
+
+    private Item getItemListeActivites()
+    {
+        return new Item("Afficher les activites", null);
     }
 
     //menus
@@ -31,7 +36,7 @@ public class MenuFactory
     {
         MenuModel model = new MenuModel("Menu principal");
 
-        model.addNode(getItemActivites());
+        model.addNode(createMenu(getMenuActivites()));
 
         model.addNode(getItemQuitter());
 
@@ -40,7 +45,14 @@ public class MenuFactory
 
     private MenuModel getMenuActivites()
     {
-        
+        MenuModel model = new MenuModel("Gestion des activites");
+
+        model.addNode(getItemCreerActivite());
+        model.addNode(getItemListeActivites());
+
+        model.addNode(getItemRetourMenuPrincipal());
+
+        return model;
     }
 
     public MenuController getMenu()

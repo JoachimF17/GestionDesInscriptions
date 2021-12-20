@@ -19,11 +19,11 @@ public class CreerActivite implements Callable
         System.out.println("------------------");
         System.out.print("Entrez le nom de l'activite : ");
         name = sc.nextLine();
-        System.out.println("Est-ce qu'une inscription est obligatoire ? (o/n)");
+        System.out.print("Est-ce qu'une inscription est obligatoire ? (o/n)");
 
         if(sc.nextLine().toLowerCase().charAt(0) == 'o')
             registration = true;
 
-        return new ActivityType(name, registration);
+        return null;
     }
 }

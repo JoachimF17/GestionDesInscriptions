@@ -1,23 +1,17 @@
 package be.technifutur.gestion;
 
-import java.util.List;
-import java.util.TreeMap;
-import java.util.concurrent.Callable;
-
 public class Main
 {
     public static void main(String[] args)
     {
-        MenuFactory mf = new MenuFactory();
-        MenuController controller = mf.getMenu();
-        ListActivityType listeActivites = new ListActivityType();
-
-        Callable call = controller.getCallable();
+        ActivityController ac = new ActivityController();
+        ac.setListe(new ListActivityType());
+        ac.setVue(new ActivityView());
 
         try
         {
-            ActivityType activite = (ActivityType) call.call();
-            listeActivites.addActivityType(activite.getName(), activite.isRegistrationRequired());
+            ActivityType activite = ac.call();
+            System.out.println(activite);
         }catch(Exception e)
         {
             System.out.println("test");

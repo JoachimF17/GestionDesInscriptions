@@ -43,7 +43,7 @@ public class MenuFactory
         model.addNode(getItemCreerActivite());
         model.addNode(getItemListeActivites());
 
-        model.addNode(createMenu(getMenuPrincipal()));
+        model.addNode(getItemQuitter());
 
         return model;
     }

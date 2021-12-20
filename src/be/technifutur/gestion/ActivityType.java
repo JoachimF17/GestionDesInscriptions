@@ -10,7 +10,7 @@ public class ActivityType implements Serializable
 
     //methodes
     //construteur
-    public ActivityType(String name, boolean registration)
+    ActivityType(String name, boolean registration)
     {
         this.name = name;
         this.registration = registration;
@@ -39,4 +39,14 @@ public class ActivityType implements Serializable
         this.registration = registration;
     }
     //fin setters
+
+
+    @Override
+    public String toString()
+    {
+        return "ActivityType{" +
+                "name='" + name + '\'' +
+                ", registration=" + registration +
+                '}';
+    }
 }

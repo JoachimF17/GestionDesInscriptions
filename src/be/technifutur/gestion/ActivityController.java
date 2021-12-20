@@ -26,6 +26,8 @@ public class ActivityController implements Callable
         String name = this.vue.activityName();
         boolean registration = this.vue.activityRegistration().charAt(0) == 'o';
 
-        return new ActivityType(name, registration);
+        this.vue.afficheActivite(this.liste.addActivityType(name, registration));
+
+        return null;
     }
 }

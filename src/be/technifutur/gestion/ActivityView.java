@@ -21,4 +21,9 @@ public class ActivityView
         System.out.print("Est-ce qu'une inscription est obligatoire ? (o/n) : ");
         return sc.nextLine();
     }
+
+    public void afficheActivite(ActivityType activite)
+    {
+        System.out.println(activite.toString());
+    }
 }

@@ -23,7 +23,8 @@ public class ListActivityType implements Serializable
 
     public ActivityType remove(String name)
     {
+        ActivityType activite = get(name);
         listeActivites.remove(name.toUpperCase());
-        return get(name);
+        return activite;
     }
 }

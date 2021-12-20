@@ -4,6 +4,7 @@ public class ControllerActivity
 {
     //attributs
     ViewActivity vue;
+
     //methodes
     public void saisirMenu()
     {

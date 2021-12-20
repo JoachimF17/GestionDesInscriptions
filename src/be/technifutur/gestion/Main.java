@@ -8,9 +8,19 @@ public class Main
 {
     public static void main(String[] args)
     {
-        /*MenuFactory mf = new MenuFactory();
-        MenuController controller = mf.getMenu();*/
-
+        MenuFactory mf = new MenuFactory();
+        MenuController controller = mf.getMenu();
         ListActivityType listeActivites = new ListActivityType();
+
+        Callable call = controller.getCallable();
+
+        try
+        {
+            ActivityType activite = (ActivityType) call.call();
+            listeActivites.addActivityType(activite.getName(), activite.isRegistrationRequired());
+        }catch(Exception e)
+        {
+            System.out.println("test");
+        }
     }
 }

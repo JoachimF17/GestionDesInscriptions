@@ -14,11 +14,6 @@ public class MenuFactory
         return new Item("Quitter", null);
     }
 
-    private Item getItemRetourMenuPrincipal()
-    {
-        return new Item("Retour menu principal", null);
-    }
-
     private Item getItemCreerActivite()
     {
         return new Item("Creer une activite", new CreerActivite());
@@ -48,7 +43,7 @@ public class MenuFactory
         model.addNode(getItemCreerActivite());
         model.addNode(getItemListeActivites());
 
-        model.addNode(getItemRetourMenuPrincipal());
+        model.addNode(createMenu(getMenuPrincipal()));
 
         return model;
     }

@@ -38,7 +38,12 @@ public class ActivityController implements Callable
              {
                  inputInvalide = true;
                  this.vue.setError("entrez quelque chose");
-             }else
+             }else if(this.liste.get(name.toUpperCase()) != null)
+             {
+                 this.vue.setError("cette activite existe deja");
+                 inputInvalide = true;
+             }
+             else
                  inputInvalide = false;
 
         }while(inputInvalide);

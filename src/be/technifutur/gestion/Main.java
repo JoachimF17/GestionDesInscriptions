@@ -4,10 +4,12 @@ public class Main
 {
     public static void main(String[] args)
     {
+        int i;
         ActivityController ac = new ActivityController();
         ac.setListe(new ListActivityType());
         ac.setVue(new ActivityView());
 
+        for(i = 0; i < 10; i++)
         try
         {
             ActivityType activite = ac.call();

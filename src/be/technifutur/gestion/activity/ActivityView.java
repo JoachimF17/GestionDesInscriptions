@@ -25,7 +25,7 @@ public class ActivityView
             System.out.println("Creer une activite");
             System.out.println("------------------");
         } else
-            System.out.println("Erreur : " + this.error);
+            errorMessage();
 
         System.out.print("Entrez le nom de l'activite : ");
 
@@ -34,9 +34,7 @@ public class ActivityView
 
     public String createActivityRegistration()
     {
-        if (this.error != null)
-            System.out.println("Erreur : " + this.error);
-
+        errorMessage();
         System.out.print("Est-ce qu'une inscription est obligatoire ? (o/n) : ");
         return sc.nextLine();
     }
@@ -57,6 +55,7 @@ public class ActivityView
 
     public String modifyActivityName()
     {
+        errorMessage();
         System.out.print("Entrez un nouveau nom (appuyer sur ENTREE directement pour conserver le nom) : ");
 
         return sc.nextLine();
@@ -103,5 +102,12 @@ public class ActivityView
     public String displayActivity(ActivityType activite)
     {
         return activite.toString();
+    }
+
+    //affichage du message d'erreur
+    private void errorMessage()
+    {
+        if (this.error != null)
+            System.out.printf("Erreur : %s%n", this.error);
     }
 }

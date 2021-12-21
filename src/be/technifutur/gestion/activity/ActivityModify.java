@@ -25,13 +25,23 @@ public class ActivityModify implements Callable
         //variables
         boolean replace = true;
         boolean registration = false;
+        boolean inputInvalide = true;
         //objets
         String oldName;
         String newName;
-        String newRegistration;
+        String tempRegistration;
 
         oldName = this.vue.getActivityName();
-        newName = this.vue.modifyActivityName();
+
+        do
+        {
+            newName = this.vue.modifyActivityName();
+
+            if(this.liste.get(newName) == null)
+                inputInvalide = false;
+            else
+                this.vue.setError("cette activite est deja encodee");
+        }while(inputInvalide);
 
         if(newName.isEmpty())
         {
@@ -39,12 +49,27 @@ public class ActivityModify implements Callable
             replace = false;
         }
 
-        newRegistration = this.vue.modifyActivityRegistration(this.liste.get(newName));
+        this.vue.setError(null);
+        inputInvalide = true;
 
-        if(newRegistration.toLowerCase().charAt(0) == 'o')
+        do
         {
-            registration = true;
-        }
+            tempRegistration = this.vue.modifyActivityRegistration(this.liste.get(oldName));
+
+            if(tempRegistration.isEmpty())
+                this.vue.setError("entrez quelque chose");
+            else if(tempRegistration.toLowerCase().charAt(0) == 'o')
+            {
+                inputInvalide = false;
+                registration = true;
+            }else if(tempRegistration.toLowerCase().charAt(0) == 'n')
+                inputInvalide = false;
+            else
+                this.vue.setError("entrez (o) ou (n)");
+
+        }while(inputInvalide);
+
+        this.vue.setError(null);
 
         if(replace)
             this.liste.remove(oldName);

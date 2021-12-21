@@ -38,7 +38,7 @@ public class ActivityAdd implements Callable
              {
                  inputInvalide = true;
                  this.vue.setError("entrez quelque chose");
-             }else if(this.liste.get(name.toUpperCase()) != null)
+             }else if(this.liste.get(name) != null)
              {
                  this.vue.setError("cette activite existe deja");
                  inputInvalide = true;
@@ -49,16 +49,14 @@ public class ActivityAdd implements Callable
         }while(inputInvalide);
 
         this.vue.setError(null);
+        inputInvalide = true;
 
         do
         {
             tempRegistration = this.vue.createActivityRegistration();
 
             if(tempRegistration.isEmpty())
-            {
-                inputInvalide = true;
                 this.vue.setError("entrez quelque chose");
-            }
             else if(tempRegistration.toLowerCase().charAt(0) == 'o')
             {
                 inputInvalide = false;

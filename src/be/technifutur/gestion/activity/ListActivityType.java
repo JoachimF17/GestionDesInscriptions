@@ -1,4 +1,6 @@
-package be.technifutur.gestion;
+package be.technifutur.gestion.activity;
+
+import be.technifutur.gestion.activity.ActivityType;
 
 import java.io.Serializable;
 import java.util.TreeMap;

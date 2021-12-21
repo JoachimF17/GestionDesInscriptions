@@ -1,4 +1,6 @@
-package be.technifutur.gestion;
+package be.technifutur.gestion.menu;
+
+import be.technifutur.gestion.menu.MenuModel;
 
 import java.util.Scanner;
 

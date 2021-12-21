@@ -1,4 +1,4 @@
-package be.technifutur.gestion;
+package be.technifutur.gestion.activity;
 
 import java.io.Serializable;
 
@@ -44,9 +44,7 @@ public class ActivityType implements Serializable
     @Override
     public String toString()
     {
-        return "ActivityType{" +
-                "name='" + name + '\'' +
-                ", registration=" + registration +
-                '}';
+        return "Nom d'activite : '" + name + '\'' +
+                ", inscription requise : " + (registration ? "oui" : "non");
     }
 }

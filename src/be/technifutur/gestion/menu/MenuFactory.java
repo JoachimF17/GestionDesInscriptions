@@ -1,6 +1,4 @@
-package be.technifutur.gestion;
-
-import be.technifutur.gestion.callables.CreerActivite;
+package be.technifutur.gestion.menu;
 
 public class MenuFactory
 {
@@ -16,7 +14,7 @@ public class MenuFactory
 
     private Item getItemCreerActivite()
     {
-        return new Item("Creer une activite", new CreerActivite());
+        return new Item("Creer une activite", null);
     }
 
     private Item getItemListeActivites()

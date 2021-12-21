@@ -1,4 +1,4 @@
-package be.technifutur.gestion;
+package be.technifutur.gestion.menu;
 
 import java.util.concurrent.Callable;
 

@@ -1,12 +1,12 @@
-package be.technifutur.gestion;
+package be.technifutur.gestion.activity;
 
 import java.util.concurrent.Callable;
 
-public class ActivityController implements Callable
+public class ActivityAdd implements Callable
 {
     //attributs
-    ListActivityType liste;
-    ActivityView vue;
+    private ListActivityType liste;
+    private ActivityView vue;
 
     //methodes
     //setters
@@ -25,14 +25,14 @@ public class ActivityController implements Callable
     {
         //variables
         boolean registration = false;
-        boolean inputInvalide = false;
+        boolean inputInvalide;
         //objets
         String name;
         String tempRegistration;
 
         do
         {
-             name = this.vue.activityName();
+             name = this.vue.createActivityName();
 
              if(name.isEmpty())
              {
@@ -52,7 +52,7 @@ public class ActivityController implements Callable
 
         do
         {
-            tempRegistration = this.vue.activityRegistration();
+            tempRegistration = this.vue.createActivityRegistration();
 
             if(tempRegistration.isEmpty())
             {
@@ -72,7 +72,7 @@ public class ActivityController implements Callable
 
         this.vue.setError(null);
 
-        this.vue.displayActivity(this.liste.addActivityType(name, registration));
+        this.vue.createActivityDisplay(this.liste.addActivityType(name, registration));
 
         return null;
     }

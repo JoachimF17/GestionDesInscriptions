@@ -23,10 +23,51 @@ public class ActivityController implements Callable
 
     @Override public ActivityType call()
     {
-        String name = this.vue.activityName();
-        boolean registration = this.vue.activityRegistration().charAt(0) == 'o';
+        //variables
+        boolean registration = false;
+        boolean inputInvalide = false;
+        //objets
+        String name;
+        String tempRegistration;
 
-        this.vue.afficheActivite(this.liste.addActivityType(name, registration));
+        do
+        {
+             name = this.vue.activityName();
+
+             if(name.isEmpty())
+             {
+                 inputInvalide = true;
+                 this.vue.setError("entrez quelque chose");
+             }else
+                 inputInvalide = false;
+
+        }while(inputInvalide);
+
+        this.vue.setError(null);
+
+        do
+        {
+            tempRegistration = this.vue.activityRegistration();
+
+            if(tempRegistration.isEmpty())
+            {
+                inputInvalide = true;
+                this.vue.setError("entrez quelque chose");
+            }
+            else if(tempRegistration.toLowerCase().charAt(0) == 'o')
+            {
+                inputInvalide = false;
+                registration = true;
+            }else if(tempRegistration.toLowerCase().charAt(0) == 'n')
+                inputInvalide = false;
+            else
+                this.vue.setError("entrez (o) ou (n)");
+
+        }while(inputInvalide);
+
+        this.vue.setError(null);
+
+        this.vue.displayActivity(this.liste.addActivityType(name, registration));
 
         return null;
     }

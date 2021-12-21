@@ -9,10 +9,22 @@ public class ActivityModify implements Callable
     private ActivityView vue;
 
     //methodes
+    //setters
+    public void setListe(ListActivityType liste)
+    {
+        this.liste = liste;
+    }
+
+    public void setVue(ActivityView vue)
+    {
+        this.vue = vue;
+    }
+    //fin setters
     @Override public Object call()
     {
         //variables
         boolean replace = true;
+        boolean registration = false;
         //objets
         String oldName;
         String newName;
@@ -29,10 +41,15 @@ public class ActivityModify implements Callable
 
         newRegistration = this.vue.modifyActivityRegistration(this.liste.get(newName));
 
-        if(replace)
+        if(newRegistration.toLowerCase().charAt(0) == 'o')
         {
-
+            registration = true;
         }
+
+        if(replace)
+            this.liste.remove(oldName);
+
+        this.vue.modifyActivityDisplay(this.liste.addActivityType(newName, registration));
 
         return null;
     }

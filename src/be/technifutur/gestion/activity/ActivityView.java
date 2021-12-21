@@ -68,6 +68,11 @@ public class ActivityView
         System.out.println("Est-ce qu'une inscription est obligatoire ? (o/n) : ");
         return sc.nextLine();
     }
+
+    public void modifyActivityDisplay(ActivityType activite)
+    {
+        System.out.printf("Vous avez modifie l'activite avec succes !%n%s", displayActivity(activite));
+    }
     //fin modifier activite
 
     //retourne le toString de l'activite pour affichage

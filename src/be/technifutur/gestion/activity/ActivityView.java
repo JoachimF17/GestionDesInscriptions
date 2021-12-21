@@ -63,10 +63,11 @@ public class ActivityView
 
     public String modifyActivityRegistration(ActivityType activite)
     {
-        if (activite != null)
+        errorMessage();
+        if (activite != null && this.error == null)
             System.out.printf("Vous modifiez l'activite suivante : %s%n", displayActivity(activite));
 
-        System.out.println("Est-ce qu'une inscription est obligatoire ? (o/n) : ");
+        System.out.print("Est-ce qu'une inscription est obligatoire ? (o/n) : ");
         return sc.nextLine();
     }
 
@@ -86,10 +87,18 @@ public class ActivityView
 
     public String confirmRemoveActivity(ActivityType activite)
     {
-        System.out.printf("Activite selectionnee : %s%n", displayActivity(activite));
-        System.out.println("Souhaitez-vous vraiment la supprimer ? (o/n) : ");
+        errorMessage();
+        if (activite != null && this.error == null)
+            System.out.printf("Activite selectionnee : %s%n", displayActivity(activite));
+
+        System.out.print("Souhaitez-vous vraiment la supprimer ? (o/n) : ");
 
         return sc.nextLine();
+    }
+
+    public void cancelRemoveActivity()
+    {
+        System.out.println("L'activite n'a pas ete supprimee !");
     }
 
     public void removeActivityDisplay(ActivityType activite)

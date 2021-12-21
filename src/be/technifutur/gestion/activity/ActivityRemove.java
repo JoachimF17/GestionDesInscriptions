@@ -25,16 +25,34 @@ public class ActivityRemove implements Callable
     @Override
     public Object call()
     {
+        //variables
+        boolean inputInvalide = true;
         //objets
         String nomActiviteASupprimer;
         String confirmation;
 
         nomActiviteASupprimer = this.vue.getRemoveActivityName();
 
-        confirmation = this.vue.confirmRemoveActivity(this.liste.get(nomActiviteASupprimer));
+        do
+        {
+            confirmation = this.vue.confirmRemoveActivity(this.liste.get(nomActiviteASupprimer));
 
-        if(confirmation.toLowerCase().charAt(0) == 'o')
-            this.vue.removeActivityDisplay(this.liste.remove(nomActiviteASupprimer));
+            if(confirmation.isEmpty())
+                this.vue.setError("entrez quelque chose");
+            else if(confirmation.toLowerCase().charAt(0) == 'o')
+            {
+                this.vue.removeActivityDisplay(this.liste.remove(nomActiviteASupprimer));
+                inputInvalide = false;
+            }
+            else if(confirmation.toLowerCase().charAt(0) == 'n')
+            {
+                this.vue.cancelRemoveActivity();
+                inputInvalide = false;
+            }else
+                this.vue.setError("entrez (o) ou (n)");
+        }while(inputInvalide);
+
+        this.vue.setError(null);
 
         return null;
     }

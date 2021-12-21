@@ -21,7 +21,7 @@ public class Main
 
         //for(i = 0; i < 10; i++)
         add.call();
-        mod.call();
-        //suppr.call();
+        //mod.call();
+        suppr.call();
     }
 }

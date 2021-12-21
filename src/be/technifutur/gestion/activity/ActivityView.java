@@ -43,7 +43,7 @@ public class ActivityView
 
     public void createActivityDisplay(ActivityType activite)
     {
-        System.out.printf("Nouvelle activite ajoutee !%n%s", displayActivity(activite));
+        System.out.printf("Nouvelle activite ajoutee !%n%s%n", displayActivity(activite));
     }
     //fin creer activite
 
@@ -64,16 +64,40 @@ public class ActivityView
 
     public String modifyActivityRegistration(ActivityType activite)
     {
-        System.out.printf("Vous modifiez l'activite suivante : %s%n", displayActivity(activite));
+        if (activite != null)
+            System.out.printf("Vous modifiez l'activite suivante : %s%n", displayActivity(activite));
+
         System.out.println("Est-ce qu'une inscription est obligatoire ? (o/n) : ");
         return sc.nextLine();
     }
 
     public void modifyActivityDisplay(ActivityType activite)
     {
-        System.out.printf("Vous avez modifie l'activite avec succes !%n%s", displayActivity(activite));
+        System.out.printf("Vous avez modifie l'activite avec succes !%n%s%n", displayActivity(activite));
     }
     //fin modifier activite
+
+    //supprimer activite
+    public String getRemoveActivityName()
+    {
+        System.out.print("Entrez le nom de l'activite a supprimer : ");
+
+        return sc.nextLine();
+    }
+
+    public String confirmRemoveActivity(ActivityType activite)
+    {
+        System.out.printf("Activite selectionnee : %s%n", displayActivity(activite));
+        System.out.println("Souhaitez-vous vraiment la supprimer ? (o/n) : ");
+
+        return sc.nextLine();
+    }
+
+    public void removeActivityDisplay(ActivityType activite)
+    {
+        System.out.printf("Activite supprimee avec succes !%n%s%n", displayActivity(activite));
+    }
+    //fin supprimer activite
 
     //retourne le toString de l'activite pour affichage
     public String displayActivity(ActivityType activite)

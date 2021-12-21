@@ -1,9 +1,6 @@
 package be.technifutur.gestion;
 
-import be.technifutur.gestion.activity.ActivityAdd;
-import be.technifutur.gestion.activity.ActivityModify;
-import be.technifutur.gestion.activity.ActivityView;
-import be.technifutur.gestion.activity.ListActivityType;
+import be.technifutur.gestion.activity.*;
 
 public class Main
 {
@@ -13,14 +10,18 @@ public class Main
         ListActivityType liste = new ListActivityType();
         ActivityAdd add = new ActivityAdd();
         ActivityModify mod = new ActivityModify();
+        ActivityRemove suppr = new ActivityRemove();
 
         add.setListe(liste);
         add.setVue(new ActivityView());
         mod.setListe(liste);
         mod.setVue(new ActivityView());
+        suppr.setListe(liste);
+        suppr.setVue(new ActivityView());
 
         //for(i = 0; i < 10; i++)
         add.call();
-        mod.call();
+        //mod.call();
+        suppr.call();
     }
 }

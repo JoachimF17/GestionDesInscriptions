@@ -20,6 +20,7 @@ public class ActivityModify implements Callable
         this.vue = vue;
     }
     //fin setters
+
     @Override public Object call()
     {
         //variables

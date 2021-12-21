@@ -21,7 +21,6 @@ public class ActivityRemove implements Callable
     }
     //fin setters
 
-
     @Override
     public Object call()
     {

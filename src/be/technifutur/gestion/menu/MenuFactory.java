@@ -1,5 +1,9 @@
 package be.technifutur.gestion.menu;
 
+import be.technifutur.gestion.activity.ActivityAdd;
+import be.technifutur.gestion.activity.ActivityModify;
+import be.technifutur.gestion.activity.ActivityRemove;
+
 public class MenuFactory
 {
     private MenuController createMenu(MenuModel model)
@@ -12,14 +16,19 @@ public class MenuFactory
         return new Item("Quitter", null);
     }
 
-    private Item getItemCreerActivite()
+    private Item getItemActivityAdd()
     {
-        return new Item("Creer une activite", null);
+        return new Item("Creer type d'activite", new ActivityAdd());
     }
 
-    private Item getItemListeActivites()
+    private Item getItemActivityModify()
     {
-        return new Item("Afficher les activites", null);
+        return new Item("Modifier l'activite", new ActivityModify());
+    }
+
+    private Item getItemActivityRemove()
+    {
+        return new Item("Supprimer l'activite", new ActivityRemove());
     }
 
     //menus
@@ -38,8 +47,9 @@ public class MenuFactory
     {
         MenuModel model = new MenuModel("Gestion des activites");
 
-        model.addNode(getItemCreerActivite());
-        model.addNode(getItemListeActivites());
+        model.addNode(getItemActivityAdd());
+        model.addNode(getItemActivityModify());
+        model.addNode(getItemActivityRemove());
 
         model.addNode(getItemQuitter());
 

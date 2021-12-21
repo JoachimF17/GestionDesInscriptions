@@ -2,8 +2,7 @@ package be.technifutur.gestion;
 
 import be.technifutur.gestion.activity.*;
 import be.technifutur.gestion.data.DataStore;
-
-import java.io.*;
+import be.technifutur.gestion.menu.MenuFactory;
 
 public class Main
 {
@@ -12,14 +11,13 @@ public class Main
         //variables
         int i;
         //objets
-        ListActivityType activityList;
+        MenuFactory facto = new MenuFactory();
+        DataStore<ListActivityType> activityFile = new DataStore<>("test.ser", ListActivityType::new);
+        ListActivityType activityList = activityFile.getData();
         ActivityView vue = new ActivityView();
         ActivityAdd add = new ActivityAdd();
         ActivityModify mod = new ActivityModify();
         ActivityRemove suppr = new ActivityRemove();
-        DataStore<ListActivityType> activityFile = new DataStore<>("test.ser", ListActivityType::new);
-
-        activityList = activityFile.getData();
 
         add.setListe(activityList);
         add.setVue(vue);

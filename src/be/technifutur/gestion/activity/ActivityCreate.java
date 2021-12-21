@@ -2,7 +2,7 @@ package be.technifutur.gestion.activity;
 
 import java.util.concurrent.Callable;
 
-public class ActivityAdd implements Callable
+public class ActivityCreate implements Callable
 {
     //attributs
     private ListActivityType liste;

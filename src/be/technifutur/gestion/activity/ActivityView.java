@@ -53,7 +53,7 @@ public class ActivityView
         return sc.nextLine().trim();
     }
 
-    public String modifyActivityName()
+    public String updateActivityName()
     {
         errorMessage();
         System.out.print("Entrez un nouveau nom (appuyer sur ENTREE directement pour conserver le nom) : ");
@@ -61,7 +61,7 @@ public class ActivityView
         return sc.nextLine().trim();
     }
 
-    public String modifyActivityRegistration(ActivityType activite)
+    public String updateActivityRegistration(ActivityType activite)
     {
         errorMessage();
         if (activite != null && this.error == null)
@@ -71,21 +71,21 @@ public class ActivityView
         return sc.nextLine().trim();
     }
 
-    public void modifyActivityDisplay(ActivityType activite)
+    public void updateActivityDisplay(ActivityType activite)
     {
         System.out.printf("Vous avez modifie l'activite avec succes !%n%s%n", displayActivity(activite));
     }
     //fin modifier activite
 
     //supprimer activite
-    public String getRemoveActivityName()
+    public String getDeleteActivityName()
     {
         System.out.print("Entrez le nom de l'activite a supprimer : ");
 
         return sc.nextLine().trim();
     }
 
-    public String confirmRemoveActivity(ActivityType activite)
+    public String confirmDeleteActivity(ActivityType activite)
     {
         errorMessage();
         if (activite != null && this.error == null)
@@ -96,12 +96,12 @@ public class ActivityView
         return sc.nextLine().trim();
     }
 
-    public void cancelRemoveActivity()
+    public void cancelDeleteActivity()
     {
         System.out.println("L'activite n'a pas ete supprimee !");
     }
 
-    public void removeActivityDisplay(ActivityType activite)
+    public void deleteActivityDisplay(ActivityType activite)
     {
         System.out.printf("Activite supprimee avec succes !%n%s%n", displayActivity(activite));
     }

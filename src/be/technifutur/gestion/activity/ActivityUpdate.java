@@ -2,7 +2,7 @@ package be.technifutur.gestion.activity;
 
 import java.util.concurrent.Callable;
 
-public class ActivityModify implements Callable
+public class ActivityUpdate implements Callable
 {
     //attributs
     private ListActivityType liste;
@@ -36,7 +36,7 @@ public class ActivityModify implements Callable
 
         do
         {
-            newName = this.vue.modifyActivityName();
+            newName = this.vue.updateActivityName();
 
             if(this.liste.get(newName) == null)
                 inputInvalide = false;
@@ -55,7 +55,7 @@ public class ActivityModify implements Callable
 
         do
         {
-            tempRegistration = this.vue.modifyActivityRegistration(this.liste.get(oldName));
+            tempRegistration = this.vue.updateActivityRegistration(this.liste.get(oldName));
 
             if(tempRegistration.isEmpty())
                 this.vue.setError("entrez quelque chose");
@@ -75,7 +75,7 @@ public class ActivityModify implements Callable
         if(replace)
             this.liste.remove(oldName);
 
-        this.vue.modifyActivityDisplay(this.liste.addActivityType(newName, registration));
+        this.vue.updateActivityDisplay(this.liste.addActivityType(newName, registration));
 
         return null;
     }

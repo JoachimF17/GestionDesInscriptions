@@ -2,7 +2,7 @@ package be.technifutur.gestion.activity;
 
 import java.util.concurrent.Callable;
 
-public class ActivityRemove implements Callable
+public class ActivityDelete implements Callable
 {
     //attributs
     private ListActivityType liste;
@@ -30,22 +30,22 @@ public class ActivityRemove implements Callable
         String nomActiviteASupprimer;
         String confirmation;
 
-        nomActiviteASupprimer = this.vue.getRemoveActivityName();
+        nomActiviteASupprimer = this.vue.getDeleteActivityName();
 
         do
         {
-            confirmation = this.vue.confirmRemoveActivity(this.liste.get(nomActiviteASupprimer));
+            confirmation = this.vue.confirmDeleteActivity(this.liste.get(nomActiviteASupprimer));
 
             if(confirmation.isEmpty())
                 this.vue.setError("entrez quelque chose");
             else if(confirmation.toLowerCase().charAt(0) == 'o')
             {
-                this.vue.removeActivityDisplay(this.liste.remove(nomActiviteASupprimer));
+                this.vue.deleteActivityDisplay(this.liste.remove(nomActiviteASupprimer));
                 inputInvalide = false;
             }
             else if(confirmation.toLowerCase().charAt(0) == 'n')
             {
-                this.vue.cancelRemoveActivity();
+                this.vue.cancelDeleteActivity();
                 inputInvalide = false;
             }else
                 this.vue.setError("entrez (o) ou (n)");

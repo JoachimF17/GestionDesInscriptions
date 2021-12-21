@@ -1,8 +1,8 @@
 package be.technifutur.gestion.menu;
 
-import be.technifutur.gestion.activity.ActivityAdd;
-import be.technifutur.gestion.activity.ActivityModify;
-import be.technifutur.gestion.activity.ActivityRemove;
+import be.technifutur.gestion.activity.ActivityCreate;
+import be.technifutur.gestion.activity.ActivityUpdate;
+import be.technifutur.gestion.activity.ActivityDelete;
 
 public class MenuFactory
 {
@@ -18,17 +18,17 @@ public class MenuFactory
 
     private Item getItemActivityAdd()
     {
-        return new Item("Creer type d'activite", new ActivityAdd());
+        return new Item("Creer type d'activite", new ActivityCreate());
     }
 
     private Item getItemActivityModify()
     {
-        return new Item("Modifier l'activite", new ActivityModify());
+        return new Item("Modifier l'activite", new ActivityUpdate());
     }
 
     private Item getItemActivityRemove()
     {
-        return new Item("Supprimer l'activite", new ActivityRemove());
+        return new Item("Supprimer l'activite", new ActivityDelete());
     }
 
     //menus

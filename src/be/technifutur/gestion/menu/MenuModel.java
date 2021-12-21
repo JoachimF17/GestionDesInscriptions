@@ -1,5 +1,7 @@
 package be.technifutur.gestion.menu;
 
+import be.technifutur.gestion.interfaces.MenuNode;
+
 import java.util.ArrayList;
 
 public class MenuModel

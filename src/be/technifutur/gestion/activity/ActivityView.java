@@ -29,14 +29,14 @@ public class ActivityView
 
         System.out.print("Entrez le nom de l'activite : ");
 
-        return sc.nextLine();
+        return sc.nextLine().trim();
     }
 
     public String createActivityRegistration()
     {
         errorMessage();
         System.out.print("Est-ce qu'une inscription est obligatoire ? (o/n) : ");
-        return sc.nextLine();
+        return sc.nextLine().trim();
     }
 
     public void createActivityDisplay(ActivityType activite)
@@ -50,7 +50,7 @@ public class ActivityView
     {
         System.out.print("Entrez le nom de l'activite que vous souhaitez modifier : ");
 
-        return sc.nextLine();
+        return sc.nextLine().trim();
     }
 
     public String modifyActivityName()
@@ -58,7 +58,7 @@ public class ActivityView
         errorMessage();
         System.out.print("Entrez un nouveau nom (appuyer sur ENTREE directement pour conserver le nom) : ");
 
-        return sc.nextLine();
+        return sc.nextLine().trim();
     }
 
     public String modifyActivityRegistration(ActivityType activite)
@@ -68,7 +68,7 @@ public class ActivityView
             System.out.printf("Vous modifiez l'activite suivante : %s%n", displayActivity(activite));
 
         System.out.print("Est-ce qu'une inscription est obligatoire ? (o/n) : ");
-        return sc.nextLine();
+        return sc.nextLine().trim();
     }
 
     public void modifyActivityDisplay(ActivityType activite)
@@ -82,7 +82,7 @@ public class ActivityView
     {
         System.out.print("Entrez le nom de l'activite a supprimer : ");
 
-        return sc.nextLine();
+        return sc.nextLine().trim();
     }
 
     public String confirmRemoveActivity(ActivityType activite)
@@ -93,7 +93,7 @@ public class ActivityView
 
         System.out.print("Souhaitez-vous vraiment la supprimer ? (o/n) : ");
 
-        return sc.nextLine();
+        return sc.nextLine().trim();
     }
 
     public void cancelRemoveActivity()

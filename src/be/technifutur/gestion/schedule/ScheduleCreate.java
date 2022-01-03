@@ -1,7 +1,5 @@
 package be.technifutur.gestion.schedule;
 
-import be.technifutur.gestion.activity.ActivityType;
-import be.technifutur.gestion.activity.ActivityView;
 import be.technifutur.gestion.activity.ListActivityType;
 
 import java.time.LocalDateTime;
@@ -74,6 +72,8 @@ public class ScheduleCreate implements Callable
 
             if(input.isEmpty())
                 vue.setError("entrez quelque chose");
+            else if(liste.activities.get(input.toUpperCase()) != null)
+                vue.setError("cette activite existe deja");
             else
                 inputInvalide = false;
         }

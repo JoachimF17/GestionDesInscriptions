@@ -19,26 +19,43 @@ public class ScheduleView
     //create
     public String createDateTimeDebut()
     {
-        System.out.print("Entrez l'horaire du debut de l'activite (format : JJ/MM/AAAA H:M) : ");
+        if(this.error == null)
+        {
+            System.out.println("Ajout d'une activite");
+            System.out.println("--------------------");
+        }else
+            errorMessage();
+
+        System.out.print("Entrez l'horaire du debut de l'activite (format : JJ/MM/AAAA HH:MM) : ");
         return sc.nextLine().trim();
     }
 
     public String createDateTimeFin()
     {
-        System.out.print("Entrez l'horaire de fin de l'activite (format : JJ/MM/AAAA H:M) : ");
+        errorMessage();
+        System.out.print("Entrez l'horaire de fin de l'activite (format : JJ/MM/AAAA HH:MM) : ");
         return sc.nextLine().trim();
     }
 
     public String createName()
     {
+        errorMessage();
         System.out.print("Entrez le nom de l'activite : ");
         return sc.nextLine().trim();
     }
 
     public String createActivityType()
     {
-        System.out.println("Entrez le nom du type d'activite : ");
+        errorMessage();
+        System.out.print("Entrez le nom du type d'activite : ");
         return sc.nextLine().trim();
     }
     //fin create
+
+    //affichage du message d'erreur
+    private void errorMessage()
+    {
+        if (this.error != null)
+            System.out.printf("Erreur : %s%n", this.error);
+    }
 }

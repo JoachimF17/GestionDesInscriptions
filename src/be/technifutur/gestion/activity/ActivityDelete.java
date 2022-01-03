@@ -9,17 +9,12 @@ public class ActivityDelete implements Callable
     private ActivityView vue;
 
     //methodes
-    //setters
-    public void setListe(ListActivityType liste)
+    //constructeur
+    public ActivityDelete(ListActivityType liste, ActivityView vue)
     {
         this.liste = liste;
-    }
-
-    public void setVue(ActivityView vue)
-    {
         this.vue = vue;
     }
-    //fin setters
 
     @Override
     public Object call()

@@ -1,11 +1,19 @@
 package be.technifutur.gestion.menu;
 
-import be.technifutur.gestion.activity.ActivityCreate;
-import be.technifutur.gestion.activity.ActivityUpdate;
-import be.technifutur.gestion.activity.ActivityDelete;
+import be.technifutur.gestion.activity.*;
 
 public class MenuFactory
 {
+    //attributs
+    private ListActivityType listActivityType;
+
+    //methodes
+    //constructeur
+    public MenuFactory(ListActivityType listActivityType)
+    {
+        this.listActivityType = listActivityType;
+    }
+
     private MenuController createMenu(MenuModel model)
     {
         return new MenuController(new MenuView(), model);
@@ -16,19 +24,19 @@ public class MenuFactory
         return new Item("Quitter", null);
     }
 
-    private Item getItemActivityAdd()
+    private Item getItemActivityCreate()
     {
-        return new Item("Creer type d'activite", new ActivityCreate());
+        return new Item("Creer type d'activite", new ActivityCreate(this.listActivityType, new ActivityView()));
     }
 
-    private Item getItemActivityModify()
+    private Item getItemActivityUpdate()
     {
-        return new Item("Modifier l'activite", new ActivityUpdate());
+        return new Item("Modifier le type d'activite", new ActivityUpdate(this.listActivityType, new ActivityView()));
     }
 
-    private Item getItemActivityRemove()
+    private Item getItemActivityDelete()
     {
-        return new Item("Supprimer l'activite", new ActivityDelete());
+        return new Item("Supprimer le type d'activite", new ActivityDelete(this.listActivityType, new ActivityView()));
     }
 
     //menus
@@ -47,9 +55,9 @@ public class MenuFactory
     {
         MenuModel model = new MenuModel("Gestion des activites");
 
-        model.addNode(getItemActivityAdd());
-        model.addNode(getItemActivityModify());
-        model.addNode(getItemActivityRemove());
+        model.addNode(getItemActivityCreate());
+        model.addNode(getItemActivityUpdate());
+        model.addNode(getItemActivityDelete());
 
         model.addNode(getItemQuitter());
 

@@ -2,6 +2,10 @@ package be.technifutur.gestion;
 
 import be.technifutur.gestion.activity.*;
 import be.technifutur.gestion.data.DataStore;
+import be.technifutur.gestion.menu.MenuController;
+import be.technifutur.gestion.menu.MenuFactory;
+
+import java.util.concurrent.Callable;
 
 public class Main
 {
@@ -11,23 +15,23 @@ public class Main
         int i;
         //objets
         DataStore<ListActivityType> activityFile = new DataStore<>("test.ser", ListActivityType::new);
-        ListActivityType activityList = activityFile.getData();
-        ActivityView vue = new ActivityView();
-        ActivityCreate add = new ActivityCreate();
-        ActivityUpdate mod = new ActivityUpdate();
-        ActivityDelete suppr = new ActivityDelete();
+        ListActivityType listActivityType = activityFile.getData();
+        MenuFactory factory = new MenuFactory(listActivityType);
+        MenuController menu = factory.getMenu();
+        Callable callable;
 
-        add.setListe(activityList);
-        add.setVue(vue);
-        mod.setListe(activityList);
-        mod.setVue(vue);
-        suppr.setListe(activityList);
-        suppr.setVue(vue);
+        callable = menu.getCallable();
 
-        //for(i = 0; i < 10; i++)
-        //add.call();
-        //mod.call();
-        //suppr.call();
+        try
+        {
+            if(callable != null)
+                callable.call();
+            else
+                System.out.println("Au revoir !");
+        }catch(Exception e)
+        {
+            System.out.println("Erreur");
+        }
 
         activityFile.save();
     }

@@ -44,7 +44,7 @@ public class ActivityType implements Serializable
     @Override
     public String toString()
     {
-        return "Nom d'activite : '" + name + '\'' +
+        return "Type d'activite : '" + name + '\'' +
                 ", inscription requise : " + (registration ? "oui" : "non");
     }
 }

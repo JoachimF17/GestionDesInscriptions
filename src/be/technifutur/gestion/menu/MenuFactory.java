@@ -29,6 +29,11 @@ public class MenuFactory
         return new Item("Creer type d'activite", new ActivityCreate(this.listActivityType, new ActivityView()));
     }
 
+    private Item getItemActivityRead()
+    {
+        return new Item("Afficher les types d'activites", new ActivityRead(this.listActivityType, new ActivityView()));
+    }
+
     private Item getItemActivityUpdate()
     {
         return new Item("Modifier le type d'activite", new ActivityUpdate(this.listActivityType, new ActivityView()));
@@ -56,6 +61,7 @@ public class MenuFactory
         MenuModel model = new MenuModel("Gestion des activites");
 
         model.addNode(getItemActivityCreate());
+        model.addNode(getItemActivityRead());
         model.addNode(getItemActivityUpdate());
         model.addNode(getItemActivityDelete());
 

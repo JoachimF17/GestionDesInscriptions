@@ -28,16 +28,4 @@ public class Item implements MenuNode
         return callable;
     }
     //fin getters
-
-    //setters
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public void setCallable(Callable callable)
-    {
-        this.callable = callable;
-    }
-    //fin setters
 }

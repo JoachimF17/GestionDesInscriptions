@@ -19,18 +19,6 @@ public class MenuController implements MenuNode
         this.model = model;
     }
 
-    //setters
-    public void setView(MenuView vue)
-    {
-        this.vue = vue;
-    }
-
-    public void setModel(MenuModel model)
-    {
-        this.model = model;
-    }
-    //fin setters
-
     @Override public String getName()
     {
         return model.getName();

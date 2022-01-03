@@ -45,6 +45,18 @@ public class ActivityView
     }
     //fin creer activite
 
+    //afficher activites
+    public void readActivityHeader()
+    {
+        System.out.println("Liste des types d'activite encodes : ");
+    }
+
+    public void readEachActivity(ActivityType activite)
+    {
+        System.out.println(activite.toString());
+    }
+    //fin afficher activites
+
     //modifier activite
     public String getActivityName()
     {

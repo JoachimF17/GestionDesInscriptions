@@ -4,17 +4,17 @@ import be.technifutur.gestion.activity.ActivityType;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class Schedule implements Serializable
 {
-    ArrayList<Activity> activities = new ArrayList<>();
+    TreeMap<String, Activity> activities = new TreeMap<>();
 
     public Activity addActivity(LocalDateTime start, LocalDateTime end, String name, ActivityType type)
     {
         Activity addActivity = new Activity(start, end, name, type);
 
-        activities.add(addActivity);
+        activities.put(name.toUpperCase(), addActivity);
 
         return addActivity;
     }

@@ -16,7 +16,9 @@ public class Main
     {
         //objets
         DataStore<ListActivityType> activityFile = new DataStore<>("test.ser", ListActivityType::new);
+        DataStore<Schedule> scheduleFile = new DataStore<>("testSchedule.ser", Schedule::new);
         ListActivityType listActivityType = activityFile.getData();
+        Schedule schedule = scheduleFile.getData();
         MenuFactory factory = new MenuFactory(listActivityType);
         MenuController menu = factory.getMenu();
         Callable callable;
@@ -34,10 +36,11 @@ public class Main
             System.out.println("Erreur");
         }*/
 
-        ScheduleCreate create = new ScheduleCreate(new Schedule(), new ScheduleView(), listActivityType);
+        ScheduleCreate create = new ScheduleCreate(schedule, new ScheduleView(), listActivityType);
 
         create.call();
 
         activityFile.save();
+        scheduleFile.save();
     }
 }

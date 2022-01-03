@@ -26,21 +26,21 @@ public class ScheduleView
         }else
             errorMessage();
 
-        System.out.print("Entrez l'horaire du debut de l'activite (format : JJ/MM/AAAA HH:MM) : ");
+        System.out.print("Entrez l'horaire du debut de l'activite (format : J/M/AAAA HH:MM) : ");
         return sc.nextLine().trim();
     }
 
     public String createDateTimeFin()
     {
         errorMessage();
-        System.out.print("Entrez l'horaire de fin de l'activite (format : JJ/MM/AAAA HH:MM) : ");
+        System.out.print("Entrez l'horaire de fin de l'activite (format : J/M/AAAA HH:MM) : ");
         return sc.nextLine().trim();
     }
 
     public String createName()
     {
         errorMessage();
-        System.out.print("Entrez le nom de l'activite : ");
+        System.out.print("Entrez le nom de l'activite (celui-ci doit etre unique) : ");
         return sc.nextLine().trim();
     }
 

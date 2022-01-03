@@ -32,18 +32,20 @@ public class ScheduleCreate implements Callable
         LocalDateTime start;
         LocalDateTime end;
         String name;
-        ActivityType type;
         String input = "";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        String regex = "([4-9]|[1-2][0-9]?|3[0-1]?|0[1-9])/([2-9]|1[0-2]?|0[1-9])/([1-9][0-9]{3}) ([0-1][0-9]|2[0-3]):([0-5][0-9])";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HH:mm");
 
         while(inputInvalide)
         {
             input = vue.createDateTimeDebut();
 
-            if(input.matches("([4-9]|[1-2][0-9]?|3[0-1]?)/([2-9]|1[0-2]?)/([1-9][0-9]{3}) ([0-1][0-9]|2[0-3]):([0-5][0-9])"))
+            if(input.isEmpty())
+                vue.setError("entrez quelque chose");
+            else if(input.matches(regex))
                 inputInvalide = false;
             else
-                vue.setError("format invalide, merci de respecter le format specifie (format : JJ/MM/AAAA HH:MM)");
+                vue.setError("format invalide, merci de respecter le format specifie (format : J/M/AAAA HH:MM)");
         }
 
         vue.setError(null);
@@ -54,10 +56,12 @@ public class ScheduleCreate implements Callable
         {
             input = vue.createDateTimeFin();
 
-            if(input.matches("([4-9]|[1-2][0-9]?|3[0-1]?)/([2-9]|1[0-2]?)/([1-9][0-9]{3}) ([0-1][0-9]|2[0-3]):([0-5][0-9])"))
+            if(input.isEmpty())
+                vue.setError("entrez quelque chose");
+            else if(input.matches(regex))
                 inputInvalide = false;
             else
-                vue.setError("format invalide, merci de respecter le format specifie (format : JJ/MM/AAAA HH:MM)");
+                vue.setError("format invalide, merci de respecter le format specifie (format : J/M/AAAA HH:MM)");
         }
 
         vue.setError(null);
@@ -82,11 +86,15 @@ public class ScheduleCreate implements Callable
         {
             input = vue.createActivityType();
 
-            if(listActivityType.get(input) == null)
+            if(input.isEmpty())
+                vue.setError("entrez quelque chose");
+            else if(listActivityType.get(input) == null)
                 vue.setError("ce type d'activite n'existe pas");
             else
                 inputInvalide = false;
         }
+
+        vue.setError(null);
 
         System.out.println(liste.addActivity(start, end, name, listActivityType.get(input)));
 

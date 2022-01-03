@@ -19,7 +19,25 @@ public class ScheduleView
     //create
     public String createDateTimeDebut()
     {
-        System.out.print("Entrez l'horaire du debut de l'activite (format : JJ/MM/AAAA H:M): ");
+        System.out.print("Entrez l'horaire du debut de l'activite (format : JJ/MM/AAAA H:M) : ");
+        return sc.nextLine().trim();
+    }
+
+    public String createDateTimeFin()
+    {
+        System.out.print("Entrez l'horaire de fin de l'activite (format : JJ/MM/AAAA H:M) : ");
+        return sc.nextLine().trim();
+    }
+
+    public String createName()
+    {
+        System.out.print("Entrez le nom de l'activite : ");
+        return sc.nextLine().trim();
+    }
+
+    public String createActivityType()
+    {
+        System.out.println("Entrez le nom du type d'activite : ");
         return sc.nextLine().trim();
     }
     //fin create

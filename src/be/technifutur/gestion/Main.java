@@ -34,7 +34,7 @@ public class Main
             System.out.println("Erreur");
         }*/
 
-        ScheduleCreate create = new ScheduleCreate(new Schedule(), new ScheduleView());
+        ScheduleCreate create = new ScheduleCreate(new Schedule(), new ScheduleView(), listActivityType);
 
         create.call();
 

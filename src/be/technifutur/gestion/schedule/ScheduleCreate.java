@@ -13,13 +13,15 @@ public class ScheduleCreate implements Callable
     //attributs
     private Schedule liste;
     private ScheduleView vue;
+    private ListActivityType listActivityType;
 
     //methodes
     //constructeur
-    public ScheduleCreate(Schedule liste, ScheduleView vue)
+    public ScheduleCreate(Schedule liste, ScheduleView vue, ListActivityType listActivityType)
     {
         this.liste = liste;
         this.vue = vue;
+        this.listActivityType = listActivityType;
     }
 
     @Override public Object call()
@@ -35,7 +37,16 @@ public class ScheduleCreate implements Callable
         input = vue.createDateTimeDebut();
         start = LocalDateTime.parse(input, formatter);
 
-        System.out.println(start);
+        input = vue.createDateTimeFin();
+        end = LocalDateTime.parse(input, formatter);
+
+        input = vue.createName();
+        name = input;
+
+        input = vue.createActivityType();
+        type = listActivityType.get(input);
+
+        System.out.println(liste.addActivity(start, end, name, type));
 
         return null;
     }

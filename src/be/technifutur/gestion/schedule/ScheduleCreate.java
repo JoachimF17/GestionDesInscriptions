@@ -27,7 +27,6 @@ public class ScheduleCreate implements Callable
     {
         //variables
         boolean inputInvalide = true;
-        boolean inputActiviteInvalide = true;
         //objets
         LocalDateTime start;
         LocalDateTime end;
@@ -95,6 +94,7 @@ public class ScheduleCreate implements Callable
             else
             {
                 String confirmation;
+                boolean inputActiviteInvalide = true;
 
                 while(inputActiviteInvalide)
                 {
@@ -104,7 +104,6 @@ public class ScheduleCreate implements Callable
                         inputActiviteInvalide = false;
                     else if (confirmation.charAt(0) == 'o')
                     {
-                        boolean registration = false;
                         boolean inputInscriptionInvalide = true;
                         String tempRegistration = "";
                         ActivityView activityView = new ActivityView();
@@ -114,16 +113,17 @@ public class ScheduleCreate implements Callable
                             tempRegistration = activityView.createActivityRegistration();
 
                             if(tempRegistration.isEmpty() || tempRegistration.toLowerCase().charAt(0) == 'n')
+                            {
                                 inputInscriptionInvalide = false;
+                                listActivityType.addActivityType(input, false);
+                            }
                             else if(tempRegistration.toLowerCase().charAt(0) == 'o')
                             {
                                 inputInscriptionInvalide = false;
-                                registration = true;
+                                listActivityType.addActivityType(input, true);
                             }else
                                 this.vue.setError("entrez (o) ou (n)");
                         }
-
-                        listActivityType.addActivityType(input, registration);
 
                         inputInvalide = false;
                         inputActiviteInvalide = false;

@@ -1,21 +1,10 @@
 package be.technifutur.gestion.schedule;
 
-import java.util.Scanner;
+import be.technifutur.gestion.abstraites.Views;
 
-public class ScheduleView
+public class ScheduleView extends Views
 {
-    //attributs
-    private Scanner sc = new Scanner(System.in);
-    private String error;
-
     //methodes
-    //setters
-    public void setError(String error)
-    {
-        this.error = error;
-    }
-    //fin setters
-
     //create
     public String createDateTimeDebut()
     {
@@ -50,12 +39,11 @@ public class ScheduleView
         System.out.print("Entrez le nom du type d'activite : ");
         return sc.nextLine().trim();
     }
-    //fin create
 
-    //affichage du message d'erreur
-    private void errorMessage()
+    public void createActivityDisplay(Activity activite)
     {
-        if (this.error != null)
-            System.out.printf("Erreur : %s%n", this.error);
+        System.out.println("Activite bien cree dans l'horaire");
+        System.out.println(activite);
     }
+    //fin create
 }

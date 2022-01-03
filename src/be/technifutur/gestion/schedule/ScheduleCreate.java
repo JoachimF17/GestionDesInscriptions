@@ -96,7 +96,7 @@ public class ScheduleCreate implements Callable
 
         vue.setError(null);
 
-        System.out.println(liste.addActivity(start, end, name, listActivityType.get(input)));
+        vue.createActivityDisplay(liste.addActivity(start, end, name, listActivityType.get(input)));
 
         return null;
     }

@@ -1,21 +1,10 @@
 package be.technifutur.gestion.activity;
 
-import java.util.Scanner;
+import be.technifutur.gestion.abstraites.Views;
 
-public class ActivityView
+public class ActivityView extends Views
 {
-    //attributs
-    private Scanner sc = new Scanner(System.in);
-    private String error;
-
     //methodes
-    //setters
-    public void setError(String error)
-    {
-        this.error = error;
-    }
-    //fin setters
-
     //creer activite
     public String createActivityName()
     {
@@ -53,7 +42,7 @@ public class ActivityView
 
     public void readEachActivity(ActivityType activite)
     {
-        System.out.println(activite.toString());
+        System.out.println(activite);
     }
     //fin afficher activites
 
@@ -123,12 +112,5 @@ public class ActivityView
     public String displayActivity(ActivityType activite)
     {
         return activite.toString();
-    }
-
-    //affichage du message d'erreur
-    private void errorMessage()
-    {
-        if (this.error != null)
-            System.out.printf("Erreur : %s%n", this.error);
     }
 }

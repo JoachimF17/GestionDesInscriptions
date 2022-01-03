@@ -8,10 +8,10 @@ import java.time.LocalDateTime;
 public class Activity implements Serializable
 {
     //atributs
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
-    private String name;
-    private ActivityType activityType;
+    public LocalDateTime startTime;
+    public LocalDateTime endTime;
+    public String name;
+    public ActivityType activityType;
 
     //methodes
     //constructeur

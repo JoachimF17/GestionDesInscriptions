@@ -1,11 +1,15 @@
 package be.technifutur.gestion.menu;
 
 import be.technifutur.gestion.activity.*;
+import be.technifutur.gestion.schedule.Schedule;
+import be.technifutur.gestion.schedule.ScheduleCreate;
+import be.technifutur.gestion.schedule.ScheduleView;
 
 public class MenuFactory
 {
     //attributs
     private ListActivityType listActivityType;
+    private Schedule horaire;
 
     //methodes
     //constructeur
@@ -44,12 +48,18 @@ public class MenuFactory
         return new Item("Supprimer le type d'activite", new ActivityDelete(this.listActivityType, new ActivityView()));
     }
 
+    private Item getItemScheduleCreate()
+    {
+        return new Item("Ajouter une activite", new ScheduleCreate(horaire, new ScheduleView(), listActivityType));
+    }
+
     //menus
     private MenuModel getMenuPrincipal()
     {
         MenuModel model = new MenuModel("Menu principal");
 
         model.addNode(createMenu(getMenuActivites()));
+        model.addNode(createMenu(getMenuHoraire()));
 
         model.addNode(getItemQuitter());
 
@@ -64,6 +74,17 @@ public class MenuFactory
         model.addNode(getItemActivityRead());
         model.addNode(getItemActivityUpdate());
         model.addNode(getItemActivityDelete());
+
+        model.addNode(getItemQuitter());
+
+        return model;
+    }
+
+    private MenuModel getMenuHoraire()
+    {
+        MenuModel model = new MenuModel("Gestion des horaires");
+
+        model.addNode(getItemScheduleCreate());
 
         model.addNode(getItemQuitter());
 

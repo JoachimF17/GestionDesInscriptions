@@ -38,6 +38,8 @@ public class MenuController implements MenuNode
             {
                 input = Integer.parseInt(this.vue.menuPrincipal(this.model));
 
+                input--;
+
                 if(input >= 0 && input < model.getSize())
                     inputInvalide = false;
                 else
@@ -48,7 +50,7 @@ public class MenuController implements MenuNode
             }
         }
 
-        node = this.model.getNode(input-1);
+        node = this.model.getNode(input);
 
         this.vue.setError(null);
 

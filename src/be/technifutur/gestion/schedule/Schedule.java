@@ -2,10 +2,11 @@ package be.technifutur.gestion.schedule;
 
 import be.technifutur.gestion.activity.ActivityType;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Schedule
+public class Schedule implements Serializable
 {
     ArrayList<Activity> activities = new ArrayList<>();
 

@@ -5,6 +5,13 @@ import be.technifutur.gestion.abstraites.Views;
 public class ScheduleView extends Views
 {
     //methodes
+    //general
+    public String nonExistentActivityType()
+    {
+        System.out.print("Le type d'activite que vous venez d'entrer n'existe pas. Souhaitez-vous le creer ? (o/n) : ");
+
+        return sc.nextLine().trim();
+    }
     //create
     public String createDateTimeDebut()
     {

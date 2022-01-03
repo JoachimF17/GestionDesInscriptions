@@ -1,5 +1,6 @@
 package be.technifutur.gestion.schedule;
 
+import be.technifutur.gestion.activity.ActivityView;
 import be.technifutur.gestion.activity.ListActivityType;
 
 import java.time.LocalDateTime;
@@ -9,7 +10,7 @@ import java.util.concurrent.Callable;
 public class ScheduleCreate implements Callable
 {
     //attributs
-    private Schedule liste;
+    private Schedule horaire;
     private ScheduleView vue;
     private ListActivityType listActivityType;
 
@@ -17,7 +18,7 @@ public class ScheduleCreate implements Callable
     //constructeur
     public ScheduleCreate(Schedule liste, ScheduleView vue, ListActivityType listActivityType)
     {
-        this.liste = liste;
+        this.horaire = liste;
         this.vue = vue;
         this.listActivityType = listActivityType;
     }
@@ -26,6 +27,7 @@ public class ScheduleCreate implements Callable
     {
         //variables
         boolean inputInvalide = true;
+        boolean inputActiviteInvalide = true;
         //objets
         LocalDateTime start;
         LocalDateTime end;
@@ -72,7 +74,7 @@ public class ScheduleCreate implements Callable
 
             if(input.isEmpty())
                 vue.setError("entrez quelque chose");
-            else if(liste.activities.get(input.toUpperCase()) != null)
+            else if(horaire.activities.get(input.toUpperCase()) != null)
                 vue.setError("cette activite existe deja");
             else
                 inputInvalide = false;
@@ -88,15 +90,52 @@ public class ScheduleCreate implements Callable
 
             if(input.isEmpty())
                 vue.setError("entrez quelque chose");
-            else if(listActivityType.get(input) == null)
-                vue.setError("ce type d'activite n'existe pas");
-            else
+            else if(listActivityType.get(input) != null)
                 inputInvalide = false;
+            else
+            {
+                String confirmation;
+
+                while(inputActiviteInvalide)
+                {
+                    confirmation = vue.nonExistentActivityType().toLowerCase();
+
+                    if (confirmation.isEmpty() || confirmation.charAt(0) == 'n')
+                        inputActiviteInvalide = false;
+                    else if (confirmation.charAt(0) == 'o')
+                    {
+                        boolean registration = false;
+                        boolean inputInscriptionInvalide = true;
+                        String tempRegistration = "";
+                        ActivityView activityView = new ActivityView();
+
+                        while(inputInscriptionInvalide)
+                        {
+                            tempRegistration = activityView.createActivityRegistration();
+
+                            if(tempRegistration.isEmpty() || tempRegistration.toLowerCase().charAt(0) == 'n')
+                                inputInscriptionInvalide = false;
+                            else if(tempRegistration.toLowerCase().charAt(0) == 'o')
+                            {
+                                inputInscriptionInvalide = false;
+                                registration = true;
+                            }else
+                                this.vue.setError("entrez (o) ou (n)");
+                        }
+
+                        listActivityType.addActivityType(input, registration);
+
+                        inputInvalide = false;
+                        inputActiviteInvalide = false;
+                    } else
+                        vue.setError("entrez (o) ou (n)");
+                }
+            }
         }
 
         vue.setError(null);
 
-        vue.createActivityDisplay(liste.addActivity(start, end, name, listActivityType.get(input)));
+        vue.createActivityDisplay(horaire.addActivity(start, end, name, listActivityType.get(input)));
 
         return null;
     }

@@ -18,4 +18,9 @@ public class Schedule implements Serializable
 
         return addActivity;
     }
+
+    public Activity getActivity(String name)
+    {
+        return activities.get(name.toUpperCase());
+    }
 }

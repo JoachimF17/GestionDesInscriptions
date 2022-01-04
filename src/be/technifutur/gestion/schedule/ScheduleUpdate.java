@@ -23,6 +23,28 @@ public class ScheduleUpdate implements Callable
 
     @Override public Object call()
     {
+        boolean inputInvalide = true;
+        String input = "";
+        String oldName;
+        String newName;
+
+        oldName = vue.getUpdateActivityName();
+
+        while(inputInvalide)
+        {
+            input = vue.getUpdateNewName();
+
+            if(liste.getActivity(input) == null || liste.getActivity(input).equals(liste.getActivity(oldName)))
+                inputInvalide = false;
+            else
+                vue.setError("ce nom existe deja pour une autre activite");
+        }
+
+        if(input.isEmpty())
+            newName = oldName;
+        else
+            newName = input;
+
         return null;
     }
 }

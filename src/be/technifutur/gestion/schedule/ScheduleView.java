@@ -53,4 +53,18 @@ public class ScheduleView extends Views
         System.out.println(activite);
     }
     //fin create
+    //update
+    public String getUpdateActivityName()
+    {
+        System.out.print("Entrez le nom de l'activite a modifier : ");
+        return sc.nextLine().trim();
+    }
+
+    public String getUpdateNewName()
+    {
+        errorMessage();
+        System.out.print("Entrez le nouveau nom (ou ENTREE directement pour conserver le nom) : ");
+        return sc.nextLine().trim();
+    }
+    //fin update
 }

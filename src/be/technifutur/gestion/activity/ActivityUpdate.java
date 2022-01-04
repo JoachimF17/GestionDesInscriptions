@@ -33,7 +33,7 @@ public class ActivityUpdate implements Callable
         {
             newName = this.vue.updateActivityName();
 
-            if(this.liste.get(newName) == null)
+            if(this.liste.get(newName) == null || liste.get(oldName).equals(liste.get(newName)))
                 inputInvalide = false;
             else
                 this.vue.setError("cette activite est deja encodee");

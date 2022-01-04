@@ -45,6 +45,14 @@ public class ScheduleUpdate implements Callable
         else
             newName = input;
 
+        vue.setError(null);
+        inputInvalide = true;
+
+        while(inputInvalide)
+        {
+            input = vue.getUpdateNewActivityType();
+        }
+
         return null;
     }
 }

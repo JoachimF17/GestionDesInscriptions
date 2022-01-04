@@ -63,7 +63,14 @@ public class ScheduleView extends Views
     public String getUpdateNewName()
     {
         errorMessage();
-        System.out.print("Entrez le nouveau nom (ou ENTREE directement pour conserver le nom) : ");
+        System.out.print("Entrez le nouveau nom (ou ENTREE directement pour conserver) : ");
+        return sc.nextLine().trim();
+    }
+
+    public String getUpdateNewActivityType()
+    {
+        errorMessage();
+        System.out.print("Entrez le nouveau type d'activite (ou ENTREE directement pour conserver) : ");
         return sc.nextLine().trim();
     }
     //fin update

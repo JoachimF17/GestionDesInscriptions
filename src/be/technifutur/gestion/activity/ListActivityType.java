@@ -6,7 +6,7 @@ import java.util.TreeMap;
 public class ListActivityType implements Serializable
 {
     //attributes
-    TreeMap<String, ActivityType> listeActivites = new TreeMap<>();
+    public TreeMap<String, ActivityType> listeActivites = new TreeMap<>();
 
     //methodes
     public ActivityType addActivityType(String name, boolean registration)

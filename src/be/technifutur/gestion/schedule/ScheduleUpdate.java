@@ -1,5 +1,9 @@
 package be.technifutur.gestion.schedule;
 
+import be.technifutur.gestion.activity.ActivityRead;
+import be.technifutur.gestion.activity.ActivityView;
+import be.technifutur.gestion.activity.ListActivityType;
+
 import java.util.concurrent.Callable;
 
 public class ScheduleUpdate implements Callable
@@ -7,19 +11,16 @@ public class ScheduleUpdate implements Callable
     //attributs
     private Schedule liste;
     private ScheduleView vue;
+    private ListActivityType listActivityType;
 
     //methodes
-    //setters
-    public void setListe(Schedule liste)
+    //constructeur
+    public ScheduleUpdate(Schedule liste, ScheduleView vue, ListActivityType listActivityType)
     {
         this.liste = liste;
-    }
-
-    public void setVue(ScheduleView vue)
-    {
         this.vue = vue;
+        this.listActivityType = listActivityType;
     }
-    //fin setters
 
     @Override public Object call()
     {
@@ -27,6 +28,7 @@ public class ScheduleUpdate implements Callable
         String input = "";
         String oldName;
         String newName;
+        ActivityRead activityRead = new ActivityRead(listActivityType, new ActivityView());
 
         oldName = vue.getUpdateActivityName();
 

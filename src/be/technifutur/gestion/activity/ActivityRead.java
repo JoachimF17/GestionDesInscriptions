@@ -17,7 +17,7 @@ public class ActivityRead implements Callable
         this.vue = vue;
     }
 
-    @Override public Object call() throws Exception
+    @Override public Object call()
     {
         this.vue.readActivityHeader();
 

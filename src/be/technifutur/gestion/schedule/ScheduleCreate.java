@@ -1,10 +1,13 @@
 package be.technifutur.gestion.schedule;
 
+import be.technifutur.gestion.activity.ActivityRead;
+import be.technifutur.gestion.activity.ActivityType;
 import be.technifutur.gestion.activity.ActivityView;
 import be.technifutur.gestion.activity.ListActivityType;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 import java.util.concurrent.Callable;
 
 public class ScheduleCreate implements Callable
@@ -31,41 +34,11 @@ public class ScheduleCreate implements Callable
         LocalDateTime start;
         LocalDateTime end;
         String name;
+        String activityTypeName;
         String input = "";
         String regex = "([4-9]|[1-2][0-9]?|3[0-1]?|0[1-9])/([2-9]|1[0-2]?|0[1-9])/([1-9][0-9]{3}) ([0-1][0-9]|2[0-3]):([0-5][0-9])";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HH:mm");
-
-        while(inputInvalide)
-        {
-            input = vue.createDateTimeDebut();
-
-            if(input.isEmpty())
-                vue.setError("entrez quelque chose");
-            else if(input.matches(regex))
-                inputInvalide = false;
-            else
-                vue.setError("format invalide, merci de respecter le format specifie (format : J/M/AAAA HH:MM)");
-        }
-
-        vue.setError(null);
-        inputInvalide = true;
-        start = LocalDateTime.parse(input, formatter);
-
-        while(inputInvalide)
-        {
-            input = vue.createDateTimeFin();
-
-            if(input.isEmpty())
-                vue.setError("entrez quelque chose");
-            else if(input.matches(regex))
-                inputInvalide = false;
-            else
-                vue.setError("format invalide, merci de respecter le format specifie (format : J/M/AAAA HH:MM)");
-        }
-
-        vue.setError(null);
-        inputInvalide = true;
-        end = LocalDateTime.parse(input, formatter);
+        ActivityRead activityRead = new ActivityRead(listActivityType, new ActivityView());
 
         while(inputInvalide)
         {
@@ -85,6 +58,7 @@ public class ScheduleCreate implements Callable
 
         while(inputInvalide)
         {
+            activityRead.call();
             input = vue.createActivityType();
 
             if(input.isEmpty())
@@ -134,8 +108,41 @@ public class ScheduleCreate implements Callable
         }
 
         vue.setError(null);
+        inputInvalide = true;
+        activityTypeName = input;
 
-        vue.createActivityDisplay(horaire.addActivity(start, end, name, listActivityType.get(input)));
+        while(inputInvalide)
+        {
+            input = vue.createDateTimeDebut();
+
+            if(input.isEmpty())
+                vue.setError("entrez quelque chose");
+            else if(input.matches(regex))
+                inputInvalide = false;
+            else
+                vue.setError("format invalide, merci de respecter le format specifie (format : J/M/AAAA HH:MM)");
+        }
+
+        vue.setError(null);
+        inputInvalide = true;
+        start = LocalDateTime.parse(input, formatter);
+
+        while(inputInvalide)
+        {
+            input = vue.createDateTimeFin();
+
+            if(input.isEmpty())
+                vue.setError("entrez quelque chose");
+            else if(input.matches(regex))
+                inputInvalide = false;
+            else
+                vue.setError("format invalide, merci de respecter le format specifie (format : J/M/AAAA HH:MM)");
+        }
+
+        vue.setError(null);
+        end = LocalDateTime.parse(input, formatter);
+
+        vue.createActivityDisplay(horaire.addActivity(start, end, name, listActivityType.get(activityTypeName)));
 
         return null;
     }

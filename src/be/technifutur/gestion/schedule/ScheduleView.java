@@ -73,5 +73,19 @@ public class ScheduleView extends Views
         System.out.print("Entrez le nouveau type d'activite (ou ENTREE directement pour conserver) : ");
         return sc.nextLine().trim();
     }
+
+    public String updateDateTimeDebut()
+    {
+        errorMessage();
+        System.out.print("Entrez le nouvel horaire de debut de l'activite (format : J/M/AAAA HH:MM) : ");
+        return sc.nextLine().trim();
+    }
+
+    public String updateDateTimeFin()
+    {
+        errorMessage();
+        System.out.print("Entrez le nouvel horaire de fin de l'activite (format : J/M/AAAA HH:MM) : ");
+        return sc.nextLine().trim();
+    }
     //fin update
 }

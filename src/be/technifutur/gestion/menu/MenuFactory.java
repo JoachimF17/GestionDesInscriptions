@@ -45,7 +45,7 @@ public class MenuFactory
 
     private Item getItemActivityDelete()
     {
-        return new Item("Supprimer le type d'activite", new ActivityDelete(this.listActivityType, new ActivityView()));
+        return new Item("Supprimer le type d'activite", new ActivityDelete(this.listActivityType, new ActivityView(), this.horaire));
     }
 
     private Item getItemScheduleCreate()

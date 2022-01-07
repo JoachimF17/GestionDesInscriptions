@@ -106,6 +106,11 @@ public class ActivityView extends Views
     {
         System.out.printf("Activite supprimee avec succes !%n%s%n", displayActivity(activite));
     }
+
+    public void scheduledActivityType(ActivityType activite)
+    {
+        System.out.printf("L'activite %s est utilisee dans l'horaire et ne peut donc pas etre supprimee !%n", displayActivity(activite));
+    }
     //fin supprimer activite
 
     //retourne le toString de l'activite pour affichage

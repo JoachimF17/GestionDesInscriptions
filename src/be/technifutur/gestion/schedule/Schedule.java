@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 public class Schedule implements Serializable
 {
-    TreeMap<String, Activity> activities = new TreeMap<>();
+    public TreeMap<String, Activity> activities = new TreeMap<>();
 
     public Activity addActivity(LocalDateTime start, LocalDateTime end, String name, ActivityType type)
     {

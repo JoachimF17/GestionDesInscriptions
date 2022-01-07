@@ -43,6 +43,7 @@ public class ScheduleUpdate implements Callable
 
         oldName = vue.getUpdateActivityName();
 
+        //modification nom
         while (inputInvalide)
         {
             input = vue.getUpdateNewName();
@@ -60,6 +61,7 @@ public class ScheduleUpdate implements Callable
 
         vue.setError(null);
 
+        //modification type activite
         activityRead.call();
         input = vue.getUpdateNewActivityType();
 
@@ -111,6 +113,7 @@ public class ScheduleUpdate implements Callable
         vue.setError(null);
         inputInvalide = true;
 
+        //modification horaire debut
         while (inputInvalide)
         {
             input = vue.updateDateTimeDebut();
@@ -129,6 +132,7 @@ public class ScheduleUpdate implements Callable
         else
             start = LocalDateTime.parse(input, formatter);
 
+        //modification horaire fin
         while (inputInvalide)
         {
             input = vue.updateDateTimeFin();
